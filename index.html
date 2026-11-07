@@ -5758,6 +5758,7 @@ const LANGS = [
 const LANG_NOW = 'tc';
 function goLang(k){
   const l = LANGS.find(x => x.k === k); if (!l) return;
+  if (k==='sc'||k==='tc') { S.set.sc = (k==='sc')?1:0; try{save();}catch(e){} }
   toast('切換中…');
   fetch(l.file, { method:'HEAD' })
     .then(r => { if (r.ok) location.href = l.file; else toast('這個網站上找不到該版本'); })

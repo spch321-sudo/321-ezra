@@ -7016,6 +7016,7 @@ const LANGS = [
 const LANG_NOW = 'en';
 function goLang(k){
   const l = LANGS.find(x => x.k === k); if (!l) return;
+  if (k==='sc'||k==='tc') { try { var K='r321.ezra.v1', o=JSON.parse(localStorage.getItem(K)||'null'); if (o && o.set) { o.set.sc=(k==='sc')?1:0; localStorage.setItem(K, JSON.stringify(o)); } } catch(e){} }
   toast('Switching...');
   fetch(l.file, { method:'HEAD' })
     .then(r => { if (r.ok) location.href = l.file; else toast('That version cannot be found on this site'); })
